@@ -9,38 +9,19 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="wrapper-form">
-        <section class="form">
-          <label for="content">Treść:</label>
-          <input type="text" id="content" />
-          <label for="date">Data:</label>
-          <input type="date" name="date" id="date" />
-          <div class="btn-box"><button class="btn">dodaj</button></div>
-          <p class="error"></p>
-        </section>
-      </div>
-      <div class="wrapper-added">
-        <section class="added">
-          <!-- <div class="added-box">
-            <span class="added-content">test Lorem ipsum dolor sit amet.</span>
-            <span class="added-date">test Lorem ipsum dolor sit amet.</span>
-            <input type="checkbox" />
-            <button class="delete-btn">usuń</button>
-          </div>
-          <div class="added-box">
-            <span class="added-content">test Lorem ipsum dolor sit amet.</span>
-            <span class="added-date">test Lorem ipsum dolor sit amet.</span>
-            <input type="checkbox" />
-            <button class="delete-btn">usuń</button>
-          </div>
-          <div class="added-box">
-            <span class="added-content">test Lorem ipsum dolor sit amet.</span>
-            <span class="added-date">test Lorem ipsum dolor sit amet.</span>
-            <input type="checkbox" />
-            <button class="delete-btn">usuń</button>
-          </div> -->
-        </section>
-      </div>
+      <section class="form">
+        <label for="content">Treść:</label>
+        <input type="text" id="content" />
+        <div class="btn-box"><button class="add-btn btn">dodaj</button></div>
+        <p class="error"></p>
+        <div class="buttons">
+         <button class="btn check-all">Zaznacz wszystkie</button>
+         <button class="btn delete-checked">Usuń zaznaczone</button>
+         <button class="btn delete-all">Usuń wszystkie</button>
+        </div>
+      </section>
+      <section class="added">
+      </section>
     </div>
 
     <script src="/dist/js/main.js"></script>

@@ -1,15 +1,17 @@
 body {
-  // background: rgb(34,193,195);
-  // background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(150,253,45,1) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: black;
 }
 
 .wrapper {
   display: flex;
+  flex-direction: column;
   // justify-content: center;
-  // align-items: center;
+  align-items: center;
   height: 800px;
-  margin: 100px;
+  width: 800px;
   border-radius: 10px;
   background: rgb(195, 34, 194);
   background: radial-gradient(
@@ -18,16 +20,12 @@ body {
     rgba(45, 253, 223, 1) 100%
   );
 }
-.wrapper-form {
-  display: flex;
-  // justify-content: center;
-  align-items: center;
-  width: 50%;
-}
+
 .form {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  align-items: center;
+  margin-top: 50px;
 
   input,
   textarea {
@@ -41,7 +39,7 @@ body {
     width: 300px;
     margin-top: 20px;
   }
-  .btn {
+   .btn{
     padding: 8px;
     border: 1px solid black;
     border-radius: 8px;
@@ -55,28 +53,26 @@ body {
     background-color: blue;
     color: white;
   }
+
+  .buttons{
+    button {
+      margin-left: 10px;
+    }
+  }
+
+  .error{
+    height: 15px;
+    color: gold;
+  }
 }
-.wrapper-added {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  margin-top: 20px;
-}
+
 .added-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 500px;
-  margin: 10px;
+  width: 600px;
   padding: 10px;
   // background-color: royalblue;
 
-  .column {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 300px;
-    padding: 5px;
-    text-transform: uppercase;
-  }
+ 
 }
