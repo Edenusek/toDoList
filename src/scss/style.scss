@@ -26,6 +26,10 @@ body {
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
+  label{
+    margin: 5px;
+    text-transform: uppercase;
+  }
 
   input,
   textarea {
@@ -65,14 +69,33 @@ body {
     color: gold;
   }
 }
+.to-dos {
+  display: flex;
+  justify-content: center;align-items: center;
+}
 
-.added-box {
+.added-to-do {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 600px;
   padding: 10px;
-  // background-color: royalblue;
 
- 
+  
+}
+
+
+.check-box {
+  background-color: black;
+  color: #f2f2f2;
+}
+
+.delete-btn, .edit-btn {
+  margin-left: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px 5px;
+  
 }
