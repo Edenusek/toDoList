@@ -7,16 +7,20 @@ const addedSection = document.querySelector(".added");
 const errorText = document.querySelector(".error");
 const deleteAllBtn = document.querySelector(".delete-all");
 const deletedAllCheckedBtn = document.querySelector(".delete-checked");
+const selectAllBtn = document.querySelector(".select-all");
 const checkBoxes = document.querySelectorAll(".check-box");
 
 const handleAdd = () => {
   if (content.value === "") {
     errorText.textContent = "Musisz uzupełnić wszystkie pola !";
     return;
-  }else if ( content.value !== "") {
+  } else if (content.value !== "") {
     errorText.textContent = "";
   }
 
+  // tworzę po koleji elementy i dodaję ję do struktury html na końcu dodaję całość czyli addedBox do sekcji 
+  // jako każdorazowy nowy toDo
+   
   const addedBox = document.createElement("div");
   addedBox.classList.add("added-to-do");
 
@@ -28,24 +32,32 @@ const handleAdd = () => {
   addedContent.classList.add("to-do-text");
   addedContent.textContent = content.value;
 
+  const divBoxBtn = document.createElement("div");
+  divBoxBtn.classList.add("btns-box");
+
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("delete-btn");
-  deleteButton.textContent = "usuń";
+  deleteButton.textContent = "Usuń";
 
   const editButton = document.createElement("button");
   editButton.classList.add("edit-btn");
-  editButton.textContent = "edytuj";
+  editButton.textContent = "Edytuj";
+
+  divBoxBtn.appendChild(deleteButton);
+  divBoxBtn.appendChild(editButton);
 
   addedBox.appendChild(checkBox);
   addedBox.appendChild(addedContent);
-  addedBox.appendChild(deleteButton);
-  addedBox.appendChild(editButton);
+  addedBox.appendChild(divBoxBtn);
+  // addedBox.appendChild(deleteButton);
+  // addedBox.appendChild(editButton);
 
   addedSection.appendChild(addedBox);
 
   content.value = "";
-
 };
+
+// tworzy addedBox  naciśnietego elemenu delet najbliżej elementu z klasą added-to-do i usuwa go
 
 const deleteHadnle = e => {
   const addedBox = e.target.closest(".added-to-do");
@@ -61,19 +73,34 @@ const editHandler = e => {
   }
 };
 
-const deletedAllCheckedHandle = () => {
-  const checked = document.querySelectorAll(".check-box")
-  // for (let i =0; i < checked.length; i++){
-  //   // if(checked[i].checked){
-  //   //   console.log("zaznaczony")
-  //   // }
-  //   // console.log(checked[i] === true )
-  //   console.log(checked)
-  // }
-  console.log(checked)
-    // checked.filter(toDo => toDo !== toDo.checked )
-  console.log("działam");
+// tworzę tablicę ze wszystkimi toDosami iteruję za pomocą forEach i zmieniam checked na true co zaznacza wszytskie
+// checkboxy
+
+const selectAllToDos = () => {
+  const checked = document.querySelectorAll(".check-box");
+
+  checked.forEach(toDo => {
+    toDo.checked = true;
+  });
+
+  console.log(checked);
+
+  // checked.checked === true
 };
+
+// tworzę tablicę z wszystkimy zaznaczonymi checkboxami , następnie metodą forEach literuje ją znajduje najbliższe
+// added-to-do z zaznaczonym checkBoxem i ją usuwa
+
+const deletedAllSelectedHandle = () => {
+  const checked = document.querySelectorAll(".check-box:checked");
+
+  checked.forEach(checkbox => {
+    const todoContainer = checkbox.closest(".added-to-do");
+    todoContainer.remove();
+  });
+};
+
+// usuwa sekcję addedSection z wszystkimi toDosami
 
 const deleteAllHandle = () => {
   addedSection.remove();
@@ -89,5 +116,19 @@ addedSection.addEventListener("click", function (e) {
   }
 });
 
+
+// const enterKey = (e) => {
+// if (e.key === "Enter"){
+//   handleAdd()
+// }
+// }
+
+content.addEventListener("keypress",  (e) =>  {
+if( e.key === "Enter"){
+  handleAdd()
+}
+})
+
 deleteAllBtn.addEventListener("click", deleteAllHandle);
-deletedAllCheckedBtn.addEventListener("click", deletedAllCheckedHandle);
+deletedAllCheckedBtn.addEventListener("click", deletedAllSelectedHandle);
+selectAllBtn.addEventListener("click", selectAllToDos);
